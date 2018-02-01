@@ -1,0 +1,152 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Kristie Testimonials\n"
+"POT-Creation-Date: 2016-02-03 16:49-0700\n"
+"PO-Revision-Date: 2016-02-03 16:50-0700\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.8.6\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-WPHeader: kristie-testimonials.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
+"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: kristie-featured-testimonial.php:18
+msgid "Displays Custom Testimonial"
+msgstr "Displays Custom Testimonial"
+
+#: kristie-featured-testimonial.php:20
+msgid "Web Savvy - Featured Testimonials"
+msgstr "Web Savvy - Featured Testimonials"
+
+#: kristie-featured-testimonial.php:129
+msgid "Title "
+msgstr "Title "
+
+#: kristie-featured-testimonial.php:132
+msgid "Testimonial 1:"
+msgstr "Testimonial 1:"
+
+#: kristie-featured-testimonial.php:134
+msgid "Testimonial 1 Author"
+msgstr "Testimonial 1 Author"
+
+#: kristie-featured-testimonial.php:137
+msgid "Testimonial 1 Company"
+msgstr "Testimonial 1 Company"
+
+#: kristie-featured-testimonial.php:140
+msgid "Testimonial 1 Photo URL"
+msgstr "Testimonial 1 Photo URL"
+
+#: kristie-featured-testimonial.php:143
+msgid "Testimonial 2:"
+msgstr "Testimonial 2:"
+
+#: kristie-featured-testimonial.php:145
+msgid "Testimonial 2 Author"
+msgstr "Testimonial 2 Author"
+
+#: kristie-featured-testimonial.php:148
+msgid "Testimonial 2 Company"
+msgstr "Testimonial 2 Company"
+
+#: kristie-featured-testimonial.php:151
+msgid "Testimonial 2 Photo URL"
+msgstr "Testimonial 2 Photo URL"
+
+#: metaboxes.php:27
+msgid "Testimonial Details:"
+msgstr "Testimonial Details:"
+
+#: metaboxes.php:35
+msgid "Company Info"
+msgstr "Company Info"
+
+#: metaboxes.php:40
+msgid "Display Excerpt"
+msgstr "Display Excerpt"
+
+#: post-types.php:12 post-types.php:23
+msgid "Testimonials"
+msgstr "Testimonials"
+
+#: post-types.php:13
+msgid "Testimonial"
+msgstr "Testimonial"
+
+#: post-types.php:14 post-types.php:15
+msgid "Add Testimonial"
+msgstr "Add Testimonial"
+
+#: post-types.php:16
+msgid "Edit Testimonial"
+msgstr "Edit Testimonial"
+
+#: post-types.php:17
+msgid "New Testimonial"
+msgstr "New Testimonial"
+
+#: post-types.php:18
+msgid "View Testimonial"
+msgstr "View Testimonial"
+
+#: post-types.php:19
+msgid "Search Testimonial"
+msgstr "Search Testimonial"
+
+#: post-types.php:20
+msgid "No Testimonial found"
+msgstr "No Testimonial found"
+
+#: post-types.php:21
+msgid "No Testimonial found in trash"
+msgstr "No Testimonial found in trash"
+
+#: post-types.php:37
+msgid "testimonial"
+msgstr "testimonial"
+
+#. Plugin Name of the plugin/theme
+msgid "Kristie Testimonials"
+msgstr "Kristie Testimonials"
+
+#. Plugin URI of the plugin/theme
+#. Author URI of the plugin/theme
+msgid "http://www.web-savvy-marketing.com/"
+msgstr "http://www.web-savvy-marketing.com/"
+
+#. Description of the plugin/theme
+msgid "Adds the Testimonial post type for the Kristie theme."
+msgstr "Adds the Testimonial post type for the Kristie theme."
+
+#. Author of the plugin/theme
+msgid "Web Savvy Marketing"
+msgstr "Web Savvy Marketing"
+
+#~ msgid "Testimonail 1 Author"
+#~ msgstr "Testimonail 1 Author"
+
+#~ msgid "Testimonail 1 Company"
+#~ msgstr "Testimonail 1 Company"
+
+#~ msgid "Testimonail 1 Photo URL"
+#~ msgstr "Testimonail 1 Photo URL"
+
+#~ msgid "Testimonail 2 Author"
+#~ msgstr "Testimonail 2 Author"
+
+#~ msgid "Testimonail 2 Company"
+#~ msgstr "Testimonail 2 Company"
+
+#~ msgid "Testimonail 2 Photo URL"
+#~ msgstr "Testimonail 2 Photo URL"
