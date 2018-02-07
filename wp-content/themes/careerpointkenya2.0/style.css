@@ -2041,6 +2041,67 @@ li.comment {
 	text-align: right;
 }
 
+/* # job Posting CPT
+---------------------------------------------------------------------------------------------------- */
+article.jobpost-entry p.jp-heading,
+article.jobpost-entry div.jp-heading,
+article.jobpost-entry p.jp-str-heading,
+div.jp-meta-content,
+span.jp-meta-content  {
+	color: #06699c;
+	font-family: 'Karla', sans-serif;
+	font-weight: 400;
+    /* line-height: 1.2; */
+	/* margin: 0 0 10px; */
+	text-transform: uppercase;
+}
+p.jp-entry-meta {
+	margin-bottom: 0;
+}
+
+article.jobpost-entry p.jp-str-heading {
+	font-weight: 700;
+}
+
+
+article.jobpost-entry span.jp-content,
+article.jobpost-entry span.jp-uc-content {
+    color: #231f20;
+    font-family: 'Karla', sans-serif;
+    font-size: 16px;
+    font-size: 1.6rem;
+    font-weight: 300;
+    line-height: 1.3;
+}
+article.jobpost-entry span.jp-uc-content {
+	text-transform: uppercase;
+}
+article.jobpost-entry h3 {
+	font-weight: 700;
+	font-size: 20px;
+	font-size: 2rem;
+	margin-bottom: 20px;
+}
+article.jobpost-archive-entry h3 {
+	font-weight: 700;
+	font-size: 20px;
+	font-size: 2rem;
+	margin-bottom: 0;
+}
+article.jobpost-entry ul > li {
+	list-style-image: url(images/bullet-list.png);
+    list-style-type: none;
+}
+article.jobpost-entry ul {
+	margin-bottom: 24px;
+	margin-left: 20px;
+}
+body > div.site-container > div > div > div > main > div.jobposting-entries > article:nth-child(1) > h3,
+p.jp-heading > p.jp-date,
+body > div.site-container > div > div > div > main > div.jobposting-entries > article:nth-child(3) > p.jp-heading > span:nth-child(1) {
+	margin-bottom: 0;
+}
+
 /* # Media Queries
 ---------------------------------------------------------------------------------------------------- */
 
