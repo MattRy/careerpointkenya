@@ -75,38 +75,6 @@ if ( $set1 ) {
   $job_posting_schema_props['jobLocation'] = '{ ' . $jobposting_content_postal_address . ' }';  
 }
 
-//* Build salary properties (Base and Estimated) from 3 separate meta input fields
-// $monetary_amount_schema_props_value =  get_post_meta( $post_id, $prefix . 'base_salary', true );
-// if ( $monetary_amount_schema_props_value ) {  
-//   $monetary_amount_schema_props_units = get_post_meta( $post_id, $prefix . 'base_salary_units', true );
-//   $monetary_amount_salary_currency = get_post_meta( $post_id, $prefix . 'salary_currency', true );
-
-//   $jobposting_content_base_salary = '
-//     "@type": "MonetaryAmount",
-//     "currency": "' . $monetary_amount_salary_currency . '",
-//     "value": {
-//       "@type": "QuantitativeValue",
-//       "value": "' . $monetary_amount_schema_props_value . '",
-//       "unitText": "' . $monetary_amount_schema_props_units . '"
-//         }';
-//   $job_posting_schema_props['baseSalary'] = '{ ' . $jobposting_content_base_salary . ' }';     
-// }
-
-//* Do it again for Estimated Salary. We will use the same units frrom above. 
-// $monetary_amount_schema_props_value =  get_post_meta( $post_id, $prefix . 'estimated_salary', true );
-// if ( $monetary_amount_schema_props_value ) { 
-//   $jobposting_content_estimated_salary = '
-//     "@type": "MonetaryAmount",
-//     "currency": "' . $monetary_amount_salary_currency . '",
-//     "value": {
-//       "@type": "QuantitativeValue",
-//       "value": "' . $monetary_amount_schema_props_value . '",
-//       "unitText": "' . $monetary_amount_schema_props_units . '" 
-//         }';
-//   $job_posting_schema_props['estimatedSalary'] = '{ ' . $jobposting_content_estimated_salary . ' }';
-// } 
-
-
 //* Set up date specific properties
 $date_post_tmp = get_post_meta( $post_id, $prefix . 'date_posted', true );
 if ( $date_post_tmp ) {
@@ -128,56 +96,17 @@ if ( $post->post_content ) {
   $attributes['description'] = '"' . esc_html($post->post_content) . '"';
 }
 
-// if ( get_post_meta( $post_id, $prefix . 'education_requirements', true ) )  
-//   $job_posting_schema_props['educationRequirements'] = '"' . get_post_meta( $post_id, $prefix . 'education_requirements', true ) . '"';
-
 // Employment Type is now a custom taxonomy: employment_type
-// if ( get_post_meta( $post_id, $prefix . 'employment_type', true ) )  
-//   $job_posting_schema_props['employmentType'] = '"' . get_post_meta( $post_id, $prefix . 'employment_type', true ) . '"';
-// $jp_empl_type = get_the_term_list( $post_id, 'employment_type', '', ', ', '' );
-  $jp_empl_type = wp_get_post_terms( $post_id, 'employment_type', array("fields" => "names") );
-  $job_posting_schema_props['employmentType'] = $jp_empl_type[0];
 
-  // if ( get_post_meta( $post_id, $prefix . 'experience_requirements', true ) ) 
-  // $job_posting_schema_props['experienceRequirements'] = '"' . get_post_meta( $post_id, $prefix . 'experience_requirements', true ) . '"';
+  $jp_empl_type = wp_get_post_terms( $post_id, 'employment_type', array("fields" => "names") );
+  $job_posting_schema_props['employmentType'] = '"' . $jp_empl_type[0] . '"';
 
   // Hiring organization is specified by post TAGS
-  // @todo rework this 
-if ( get_post_meta( $post_id, $prefix . 'hiring_organization', true ) ) 
-  $job_posting_schema_props['hiringOrganization'] = '"' . get_post_meta( $post_id, $prefix . 'hiring_organization', true ) . '"';
+  $jp_hire_org = wp_get_post_terms( $post_id, 'post_tag', array("fields" => "names") );
+  $job_posting_schema_props['hiringOrganization'] = '"' . $jp_hire_org[0] . '"';
   
-// if ( get_post_meta( $post_id, $prefix . 'incentive_compensation', true ) ) 
-//   $job_posting_schema_props['incentiveCompensation'] = '"' . get_post_meta( $post_id, $prefix . 'incentive_compensation', true ) . '"';
-
-  // if ( get_post_meta( $post_id, $prefix . 'industry', true )  ) 
-  // $job_posting_schema_props['industry'] = '"' . get_post_meta( $post_id, $prefix . 'industry', true ) . '"';
-
-// if ( get_post_meta( $post_id, $prefix . 'job_benefits', true ) ) 
-//   $job_posting_schema_props['jobBenefits'] = '"' . get_post_meta( $post_id, $prefix . 'job_benefits', true ) . '"';
-  
-// if ( get_post_meta( $post_id, $prefix . 'occupational_category', true ) ) 
-//  $job_posting_schema_props['occupationalCategory'] = '"' . get_post_meta( $post_id, $prefix . 'occupational_category', true ) . '"';
-  
-// if ( get_post_meta( $post_id, $prefix . 'qualifications', true ) ) 
-//  $job_posting_schema_props['qualifications'] = '"' . get_post_meta( $post_id, $prefix . 'qualifications', true ) . '"';
- 
-// if ( get_post_meta( $post_id, $prefix . 'responsibilities', true ) ) 
-//  $job_posting_schema_props['responsibilities'] = '"' . get_post_meta( $post_id, $prefix . 'responsibilities', true ) . '"';
-
-// if ( get_post_meta( $post_id, $prefix . 'salary_currency', true ) ) 
-//  $job_posting_schema_props['salaryCurrency'] = '"' . get_post_meta( $post_id, $prefix . 'salary_currency', true ) . '"';
-
-// if ( get_post_meta( $post_id, $prefix . 'skills', true ) ) 
-//  $job_posting_schema_props['skills'] = '"' . get_post_meta( $post_id, $prefix . 'skills', true ) . '"';
-
-// if ( get_post_meta( $post_id, $prefix . 'special_commitments', true ) ) 
-//  $job_posting_schema_props['specialCommitments'] = '"' . get_post_meta( $post_id, $prefix . 'special_commitments', true ) . '"';
-
 if ( get_post_meta( $post_id, $prefix . 'job_title', true ) ) 
  $job_posting_schema_props['title'] = '"' . get_post_meta( $post_id, $prefix . 'job_title', true ) . '"';
-
-// if ( get_post_meta( $post_id, $prefix . 'work_hours', true ) )
-//  $job_posting_schema_props['workHours'] = '"' . get_post_meta( $post_id, $prefix . 'work_hours', true ) . '"';
 
 foreach ($job_posting_schema_props as $key => $value) {
   $jobposting_content .= ',
