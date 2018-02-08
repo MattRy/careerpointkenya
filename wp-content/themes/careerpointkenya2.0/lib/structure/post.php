@@ -61,7 +61,7 @@ function wsm_jobposting_attributes_entry( $attributes ) {
 		return $attributes;
 	}
 
-	if ( 'post' === get_post_type() ) {
+	if ( 'job_posting' === get_post_type() ) {
 		$attributes['itemscope'] = true;
 		$attributes['itemtype']  = 'http://schema.org/JobPosting';
 
