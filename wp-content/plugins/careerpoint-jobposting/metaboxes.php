@@ -100,14 +100,12 @@ function wsm_register_jobposting_metabox() {
 		'type' => 'text',
 		'attributes' => array( 'required' => 'required', ),
 	) );
-	// This needs to come from the posts' TAGS
+	// This has become a taxonomy to support archive pages 
 	// $cmb_jobposting->add_field( array(
 	// 	'name' => __( 'Hiring Organization', 'careerpoint-jobposting' ),
 	// 	'id'   => $prefix . 'hiring_organization',
-	// 	// 'type' => 'text',
+	// 	'type' => 'text',
 	// 	'taxonomy'       => 'tags', 
-	// 	'type'           => 'taxonomy_select',
-	// 	'remove_default' => 'true',
 	// 	'attributes' => array( 'required' => 'required', ),
 	// ) );
 

@@ -103,11 +103,16 @@ return $post_info;
 add_filter( 'genesis_post_meta', 'post_meta_filter' );
 function post_meta_filter( $post_meta ) {
 	if ( ! is_singular( array( 'post', 'job_posting' ) ) )   return;
+
 	if ( is_singular( array( 'post' ) ) ) {
 		$post_meta = '[post_categories sep=", " before="Job Category: "] [post_tags sep=", " before="Employer: "] ';
 	} else {
-		// here it must be a job_posting
-		$post_meta = '[wsm-custom-post-meta taxonomy="employment_type" prepend="Employment Type: "] [post_categories sep=", " before="Job Category: "] [post_tags sep=", " before="Employer: "] ';
+		// here it must be a job_posting - Decide if using post Tag or Hiring Organization taxonomy or both
+		if ( has_term( '', 'post_tag' ) ) {
+			$post_meta = '[wsm-custom-post-meta taxonomy="employment_type" prepend="Employment Type: "] [post_categories sep=", " before="Job Category: "] [post_tags sep=", " before="Employer(s): "] [wsm-custom-post-meta taxonomy="hiring_organizations" sep=", " prepend=""]';
+		} else {
+			$post_meta = '[wsm-custom-post-meta taxonomy="employment_type" prepend="Employment Type: "] [post_categories sep=", " before="Job Category: "] [wsm-custom-post-meta taxonomy="hiring_organizations" sep=", " prepend="Employer: "] ';
+		}
 	}
     return $post_meta;
 }
