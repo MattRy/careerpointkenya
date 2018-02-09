@@ -580,7 +580,6 @@ function ea_add_inpost_layout_box() {
 add_action( 'admin_menu', 'ea_add_inpost_layout_box' );
 remove_action( 'admin_menu', 'genesis_add_inpost_layout_box' );
 
-
 /** A custom shortcode to fetch terms of a custom taxomomy for any post **/
 add_shortcode( 'wsm-custom-post-meta', 'wsm_custom_post_meta' );
 function wsm_custom_post_meta( $atts ) {
@@ -601,5 +600,3 @@ function wsm_custom_post_meta( $atts ) {
 	// Allow a filter to change the default output and the shortcode attributes/arguments
 	return apply_filters( 'wsm_custom_post_meta', $output, $atts );
 }
-
-
