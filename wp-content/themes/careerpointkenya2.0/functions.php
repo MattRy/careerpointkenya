@@ -643,7 +643,7 @@ function cptui_register_my_taxes_employment_type() {
 		"public" => true,
 		"hierarchical" => false,
 		"label" => "Employment Types",
-		"show_ui" => false,  
+		"show_ui" => true,  
 		"show_in_menu" => true,
 		"show_in_nav_menus" => true,
 		"query_var" => true,
@@ -655,9 +655,15 @@ function cptui_register_my_taxes_employment_type() {
 	);
 	register_taxonomy( "employment_type", array( "job_posting" ), $args );
 }
-
 add_action( 'init', 'cptui_register_my_taxes_employment_type' );
 
+// Add Job Posting CPT to main RSS feed.
+function wsm_add_cpt_to_feed( $query ) {
+	if ( $query->is_feed() )
+		$query->set( 'post_type', array( 'post', 'job_posting' ) ); 
+	return $query;
+}
+add_filter( 'pre_get_posts', 'wsm_add_cpt_to_feed' );
 
 /**
  * Tweak the placeholder for the Job_Posting CPT Add New meta box. 

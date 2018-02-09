@@ -27,6 +27,8 @@ if ( 'job_posting' === get_post_type() ) {
     $attributes['itemprop']  = 'JobPosting';
   }
 
+} else {
+  return;
 }
 
 //* do not add job posting schema data for old posts - temp fix
