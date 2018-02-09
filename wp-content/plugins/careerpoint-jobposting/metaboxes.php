@@ -101,15 +101,15 @@ function wsm_register_jobposting_metabox() {
 		'attributes' => array( 'required' => 'required', ),
 	) );
 	// This needs to come from the posts' TAGS
-	$cmb_jobposting->add_field( array(
-		'name' => __( 'Hiring Organization', 'careerpoint-jobposting' ),
-		'id'   => $prefix . 'hiring_organization',
-		// 'type' => 'text',
-		'taxonomy'       => 'tags', 
-		'type'           => 'taxonomy_select',
-		'remove_default' => 'true',
-		'attributes' => array( 'required' => 'required', ),
-	) );
+	// $cmb_jobposting->add_field( array(
+	// 	'name' => __( 'Hiring Organization', 'careerpoint-jobposting' ),
+	// 	'id'   => $prefix . 'hiring_organization',
+	// 	// 'type' => 'text',
+	// 	'taxonomy'       => 'tags', 
+	// 	'type'           => 'taxonomy_select',
+	// 	'remove_default' => 'true',
+	// 	'attributes' => array( 'required' => 'required', ),
+	// ) );
 
 	$cmb_jobposting->add_field( array(
 		'name' => __( 'Employment Type', 'careerpoint-jobposting' ),
