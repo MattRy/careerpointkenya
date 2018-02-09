@@ -554,6 +554,14 @@ function ea_add_inpost_seo_box() {
 add_action( 'admin_menu', 'ea_add_inpost_seo_box' );
 remove_action( 'admin_menu', 'genesis_add_inpost_seo_box' );
 
+
+// Move Yoast SEO to bottom of edit screen
+function wsm_yoasttobottom() {
+	return 'low';
+}
+add_filter( 'wpseo_metabox_prio', 'wsm_yoasttobottom');
+
+
 /**
  * Re-prioritise layout metabox from high to default.
  *
@@ -572,120 +580,6 @@ function ea_add_inpost_layout_box() {
 add_action( 'admin_menu', 'ea_add_inpost_layout_box' );
 remove_action( 'admin_menu', 'genesis_add_inpost_layout_box' );
 
-// Updates for TKT 1412/1413
-
-/**
- * CPTUI Function to create and register Job Posting Custom Post Type. 
- * Code crated by CPTUI plugin, exported and then added here. 
- *
- * @return void
- */
-function cptui_register_my_cpts() {
-
-	/**
-	 * Post Type: Job Postings.
-	 */
-
-	$labels = array(
-		"name" => __( "Jobs", "wsm" ),
-		"singular_name" => __( "Job", "wsm" ),
-		"menu_name" => __( "Jobs", "wsm" ),
-		"add_new" => __( "Add New Job", "wsm" ),
-		"add_new_item" => __( "Add New Job", "wsm" ),
-		"edit_item" => __( "Edit Job", "wsm" ),
-		"new_item" => __( "New Job", "wsm" ),
-		"view_item" => __( "View Job", "wsm" ),
-		"view_items" => __( "View Jobs", "wsm" ),
-		"archives" => __( "Job Archives", "wsm" ),
-		"items_list" => __( "Jobs List", "wsm" ),
-	);
-
-	$args = array(
-		"label" => __( "Jobs", "wsm" ),
-		"labels" => $labels,
-		"description" => "",
-		"public" => true,
-		"publicly_queryable" => true,
-		"show_ui" => true,
-		"show_in_rest" => false,
-		"rest_base" => "",
-		"has_archive" => "jobs",
-		"show_in_menu" => true,
-		"exclude_from_search" => false,
-		"capability_type" => "post",
-		"map_meta_cap" => true,
-		"hierarchical" => false,
-		"rewrite" => array( "slug" => "job", "with_front" => true ),
-		"query_var" => true,
-		"menu_icon" => "dashicons-megaphone",
-		"supports" => array( "editor", "title", "genesis-cpt-archives-settings" ),
-		"taxonomies" => array( "category", "post_tag", "employment_type" ),
-	);
-
-	register_post_type( "job_posting", $args );
-}
-add_action( 'init', 'cptui_register_my_cpts' );
-
-function cptui_register_my_taxes_employment_type() {
-
-	/**
-	 * Taxonomy: Employment Types.
-	 */
-
-	$labels = array(
-		"name" => __( "Employment Types", "wsm" ),
-		"singular_name" => __( "Employment Type", "wsm" ),
-	);
-
-	$args = array(
-		"label" => __( "Employment Types", "wsm" ),
-		"labels" => $labels,
-		"public" => true,
-		"hierarchical" => false,
-		"label" => "Employment Types",
-		"show_ui" => true,  
-		"show_in_menu" => true,
-		"show_in_nav_menus" => true,
-		"query_var" => true,
-		"rewrite" => array( 'slug' => 'employment-type', 'with_front' => true, ),
-		"show_admin_column" => true,
-		"show_in_rest" => false,
-		"rest_base" => "",
-		"show_in_quick_edit" => true,
-	);
-	register_taxonomy( "employment_type", array( "job_posting" ), $args );
-}
-add_action( 'init', 'cptui_register_my_taxes_employment_type' );
-
-// Add Job Posting CPT to main RSS feed.
-function wsm_add_cpt_to_feed( $query ) {
-	if ( $query->is_feed() )
-		$query->set( 'post_type', array( 'post', 'job_posting' ) ); 
-	return $query;
-}
-add_filter( 'pre_get_posts', 'wsm_add_cpt_to_feed' );
-
-/**
- * Tweak the placeholder for the Job_Posting CPT Add New meta box. 
- */
-add_filter('gettext','custom_enter_title');
-function custom_enter_title( $input ) {
-    global $post_type;
-    if( is_admin() && 'Enter title here' == $input && 'job_posting' == $post_type )
-        return 'Enter Title for this Job Post';
-    return $input;
-}
-
-/**
- * Add a little intro above the post editor screen for Job_post CPT. 
- */
-add_action( 'edit_form_after_title', 'wsm_add_editor_intro' );
-function wsm_add_editor_intro() {
-	global $post, $post_type;
-	if( is_admin() && 'job_posting' == $post_type ) { 
-		echo 'Enter full job description in box below, including, but not limited to: education requirements, experience needed, recommended skills, job responsibilities, benefits, application requirements, salary, etc.';
-	}
-}
 
 /** A custom shortcode to fetch terms of a custom taxomomy for any post **/
 add_shortcode( 'wsm-custom-post-meta', 'wsm_custom_post_meta' );
@@ -708,32 +602,4 @@ function wsm_custom_post_meta( $atts ) {
 	return apply_filters( 'wsm_custom_post_meta', $output, $atts );
 }
 
-add_filter( 'pre_get_posts', 'wsm_cpk_show_cpt_archives' );
-add_action( 'pre_get_posts', 'wsm_cpk_add_custom_post_types_to_loop' );
-/**
- * wsm_cpk_show_cpt_archives - Display job posting entires on taxonomy archive pages
- *
- * @param [type] $query
- * @return void
- */
-function wsm_cpk_show_cpt_archives( $query ) {
-	if( is_category() || is_tag() && empty( $query->query_vars['suppress_filters'] ) ) { 
-		$query->set( 'post_type', array(
-			'post', 'nav_menu_item', 'job_posting'
-		));
-		return $query;
-	}
-}
 
-/**
- * wsm_cpk_add_custom_post_types_to_loop - Add JobPosting CPT to front page loop.
- *
- * @param [type] $query
- * @return void
- */
-function wsm_cpk_add_custom_post_types_to_loop( $query ) {
-	if ( is_home() && $query->is_main_query() ) {
-		$query->set( 'post_type', array( 'post', 'job_posting' ) );
-		return $query;
-    }
-}

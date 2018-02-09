@@ -12,7 +12,9 @@ Text Domain: careerpoint-jobposting
 namespace WebSavvyMarketing\CareerpointJobPosting;
 
 // Get all the things
+require_once( dirname( __FILE__ ) . '/post-types.php' );
 require_once( dirname( __FILE__ ) . '/metaboxes.php' );
+require_once( dirname( __FILE__ ) . '/taxonomies.php' );
 require_once( dirname( __FILE__ ) . '/helper-functions.php' );
 
 // Set up templates for new post type
