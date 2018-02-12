@@ -103,9 +103,18 @@ if ( $post->post_content ) {
   $jp_empl_type = wp_get_post_terms( $post_id, 'employment_type', array("fields" => "names") );
   $job_posting_schema_props['employmentType'] = '"' . $jp_empl_type[0] . '"';
 
-// Hiring organization is now a custom taxonomy 
-  $jp_hire_org = wp_get_post_terms( $post_id, 'hiring_organizations', array("fields" => "names") );
-  $job_posting_schema_props['hiringOrganization'] = '"' . $jp_hire_org[0] . '"';
+// Hiring organization is now a custom taxonomy - could be none, one or more entries
+  $job_posting_schema_props['hiringOrganization'] = '';
+  $sep = '';
+  $jp_hire_org_list = wp_get_post_terms( $post_id, 'hiring_organizations', array("fields" => "names") );
+  if ( count($jp_hire_org_list) ) {
+    $job_posting_schema_props['hiringOrganization'] = '"';
+    foreach($jp_hire_org_list as $jp_hire_org) {
+      $job_posting_schema_props['hiringOrganization'] .= $sep . $jp_hire_org;
+      $sep = ", ";
+    }
+    $job_posting_schema_props['hiringOrganization'] .= '"';
+  }
   
 if ( get_post_meta( $post_id, $prefix . 'job_title', true ) ) 
  $job_posting_schema_props['title'] = '"' . get_post_meta( $post_id, $prefix . 'job_title', true ) . '"';

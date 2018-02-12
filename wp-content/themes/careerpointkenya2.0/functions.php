@@ -107,16 +107,26 @@ function post_meta_filter( $post_meta ) {
 	if ( is_singular( array( 'post' ) ) ) {
 		$post_meta = '[post_categories sep=", " before="Job Category: "] [post_tags sep=", " before="Employer: "] ';
 	} else {
-		// here it must be a job_posting - Decide if using post Tag or Hiring Organization taxonomy or both
-		if ( has_term( '', 'post_tag' ) ) {
+		// here it must be a job_posting - Decide if using post Tag or Hiring Organization taxonomy or both or none
+		if ( ! has_term( '', array('post_tag', 'hiring_organizations' ) ) )  return '[post_categories sep=", " before="Job Category: "]';
+		// Has one of 'em
+		$has_term_hire_org = has_term( '', 'hiring_organizations' );
+		$has_term_post_tag = has_term( '', 'post_tag');
+		if ( $has_term_hire_org && $has_term_post_tag ) {	
+			// Has both	
 			$post_meta = '[wsm-custom-post-meta taxonomy="employment_type" prepend="Employment Type: "] [post_categories sep=", " before="Job Category: "] [post_tags sep=", " before="Employer(s): "] [wsm-custom-post-meta taxonomy="hiring_organizations" sep=", " prepend=""]';
-		} else {
-			$post_meta = '[wsm-custom-post-meta taxonomy="employment_type" prepend="Employment Type: "] [post_categories sep=", " before="Job Category: "] [wsm-custom-post-meta taxonomy="hiring_organizations" sep=", " prepend="Employer: "] ';
+			return $post_meta;
 		}
+		if ( $has_term_post_tag ) {
+			// Has post tag only
+			$post_meta = '[wsm-custom-post-meta taxonomy="employment_type" prepend="Employment Type: "] [post_categories sep=", " before="Job Category: "] [post_tags sep=", " before="Employer(s): "] ';
+			return $post_meta;
+		} 
+			// Only has hiring org
+		$post_meta = '[wsm-custom-post-meta taxonomy="employment_type" prepend="Employment Type: "] [post_categories sep=", " before="Job Category: "] [wsm-custom-post-meta taxonomy="hiring_organizations" sep=", " prepend="Employer(s): "] ';
 	}
     return $post_meta;
 }
-
 
 add_action( 'admin_menu', 'my_remove_menu_pages' );
 function my_remove_menu_pages() {
