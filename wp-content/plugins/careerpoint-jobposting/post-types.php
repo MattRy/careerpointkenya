@@ -45,7 +45,7 @@ function cptui_register_my_cpts() {
 		"rewrite" => array( "slug" => "job", "with_front" => true ),
 		"query_var" => true,
 		"menu_icon" => "dashicons-megaphone",
-		"supports" => array( "editor", "title", "genesis-cpt-archives-settings" ),
+		"supports" => array( "editor", "title", "author", "genesis-cpt-archives-settings" ),
 		"taxonomies" => array( "category", "post_tag", "employment_type" ),
 	);
 

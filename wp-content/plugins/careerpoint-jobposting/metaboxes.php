@@ -109,25 +109,25 @@ function wsm_register_jobposting_metabox() {
 	// 	'attributes' => array( 'required' => 'required', ),
 	// ) );
 
-	$cmb_jobposting->add_field( array(
-		'name' => __( 'Employment Type', 'careerpoint-jobposting' ),
-		'id'   => $prefix . 'employment_type',
-		// 'type' => 'taxonomy_radio_inline',
-		'taxonomy'       => 'employment_type', 
-		'type'           => 'taxonomy_select',
-		'remove_default' => 'true',
-		// 'options' => array(
-		// 	'FULL_TIME'   => __( 'Full Time', 'careerpoint-jobposting' ),
-		// 	'PART_TIME'   => __( 'Part Time', 'careerpoint-jobposting' ),
-		// 	'CONTRACTOR'     => __( 'Contract', 'careerpoint-jobposting' ),
-		// 	'TEMPORARY'     => __( 'Temporary', 'careerpoint-jobposting' ),
-		// 	'VOLUNTEER'     => __( 'Volunteer', 'careerpoint-jobposting' ),
-		// 	'INTERN'     => __( 'Intern', 'careerpoint-jobposting' ),
-		// 	'PER_DIEM'     => __( 'Per Diem', 'careerpoint-jobposting' ),
-		// 	'OTHER'     => __( 'Other', 'careerpoint-jobposting' ),
-		// ),
-		'attributes' => array( 'required' => 'required', ),
-	) );
+	// $cmb_jobposting->add_field( array(
+	// 	'name' => __( 'Employment Type', 'careerpoint-jobposting' ),
+	// 	'id'   => $prefix . 'employment_type',
+	// 	// 'type' => 'taxonomy_radio_inline',
+	// 	'taxonomy'       => 'employment_type', 
+	// 	'type'           => 'taxonomy_select',
+	// 	'remove_default' => 'true',
+	// 	// 'options' => array(
+	// 	// 	'FULL_TIME'   => __( 'Full Time', 'careerpoint-jobposting' ),
+	// 	// 	'PART_TIME'   => __( 'Part Time', 'careerpoint-jobposting' ),
+	// 	// 	'CONTRACTOR'     => __( 'Contract', 'careerpoint-jobposting' ),
+	// 	// 	'TEMPORARY'     => __( 'Temporary', 'careerpoint-jobposting' ),
+	// 	// 	'VOLUNTEER'     => __( 'Volunteer', 'careerpoint-jobposting' ),
+	// 	// 	'INTERN'     => __( 'Intern', 'careerpoint-jobposting' ),
+	// 	// 	'PER_DIEM'     => __( 'Per Diem', 'careerpoint-jobposting' ),
+	// 	// 	'OTHER'     => __( 'Other', 'careerpoint-jobposting' ),
+	// 	// ),
+	// 	'attributes' => array( 'required' => 'required', ),
+	// ) );
 
 	$cmb_jobposting->add_field( array(
 		'name' => __( 'Job Location-Locality', 'careerpoint-jobposting' ),
