@@ -2059,7 +2059,7 @@ p.jp-entry-meta {
 	margin-bottom: 0;
 }
 
-article.job_posting.type-job_posting.entry > div > p > span {
+article.job_posting.type-job_posting.entry > div > p > span.more-link {
 	border-bottom: 1px solid #C6C8CA;
     margin-bottom: 20px;
     padding-bottom: 20px;
