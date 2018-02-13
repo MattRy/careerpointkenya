@@ -2059,6 +2059,12 @@ p.jp-entry-meta {
 	margin-bottom: 0;
 }
 
+article.job_posting.type-job_posting.entry > div > p > span {
+	border-bottom: 1px solid #C6C8CA;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}
+
 article.jobpost-entry p.jp-str-heading {
 	font-weight: 700;
 }
@@ -2101,6 +2107,7 @@ p.jp-heading > p.jp-date,
 body > div.site-container > div > div > div > main > div.jobposting-entries > article:nth-child(3) > p.jp-heading > span:nth-child(1) {
 	margin-bottom: 0;
 }
+
 
 /* # Media Queries
 ---------------------------------------------------------------------------------------------------- */
