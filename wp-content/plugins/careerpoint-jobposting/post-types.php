@@ -72,3 +72,27 @@ function wsm_custom_enter_job_post_title( $input ) {
         return 'Enter Title for this Job Post';
     return $input;
 }
+
+/**
+ * Load Recipe Custom Post Type and Flush Rewrite Rules
+ *
+ * We run this on plugin activation to prevent the problem of the custom post
+ * type URLs not loading initially (because their URL pattern is not included
+ * in the cached rewrite rules). We explicitly call the code to register the
+ * custom post type because that code, which executes on the `init`, hook
+ * has not yet executed.
+ */
+function cptui_register_my_cpts_activation() {
+	cptui_register_my_cpts();
+	flush_rewrite_rules();
+}
+/**
+ * Flush the rewrite rules.
+ *
+ * We run this on plugin deactivation to ensure the rewrite rules no longer
+ * included the URL pattern for our Custom Post Type.
+ */
+function cptui_register_my_cpts_deactivation() {
+	flush_rewrite_rules();
+	flush_rewrite_rules();
+}
