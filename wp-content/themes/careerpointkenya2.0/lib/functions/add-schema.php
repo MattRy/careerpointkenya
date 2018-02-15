@@ -14,11 +14,11 @@ function wsm_write_job_posting_schema(  ){
 
 global $post;
 
-if ( ! is_main_query() && ! genesis_is_blog_template() ) {
+if ( ! is_main_query() && ! genesis_is_blog_template() || is_archive() ) {
   return;
 }
 
-if ( 'job_posting' === get_post_type() ) {
+if ( 'job_posting' === get_post_type() ) { 
   $attributes['itemscope'] = true;
   $attributes['itemtype']  = 'http://schema.org/JobPosting';
 
