@@ -57,7 +57,7 @@ function wsm_attributes_entry( $attributes ) {
 function wsm_jobposting_attributes_entry( $attributes ) {
 
 	//* Only target main query entries
-	if ( ! is_main_query() && ! genesis_is_blog_template() ) {
+	if ( ! is_main_query() && ! genesis_is_blog_template() || is_archive() || is_tag() ) {
 		return $attributes;
 	}
 
