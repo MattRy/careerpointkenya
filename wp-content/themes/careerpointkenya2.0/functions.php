@@ -394,6 +394,15 @@ function wsm_add_bottom_ad_archives() {
     );
 }
 
+add_action('genesis_after_header', 'wsm_move_breadcrumb_if_ad_exists_at_top');
+function wsm_move_breadcrumb_if_ad_exists_at_top(){
+	if ( is_archive() ) {
+		remove_action('genesis_before_loop','genesis_do_breadcrumbs' );
+		add_action('genesis_before_loop', 'genesis_do_breadcrumbs', 15 );
+	}
+	return;
+}
+
 //* Update Site Name
 // add_action( 'get_header', 'eccu_custom_logo_url' );
 function eccu_custom_logo_url() {
