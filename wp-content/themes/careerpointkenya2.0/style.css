@@ -3,7 +3,7 @@
 	Description: Custom child theme created especially for Career Point Kenya by Web Savvy Marketing on the <a href="http://web-savvy-marketing.com/go/studiopress/">Genesis framework</a>.
 	Author: Web Savvy Marketing
 	Author URI: http://www.web-savvy-marketing.com/
-	Version: 2.0.2.120717
+	Version: 2.0.2.040618
 
 	Template: genesis
 
@@ -219,21 +219,21 @@ html {
 
 body {
 	background: url(images/main-bg.png) repeat 0 0 #5891B3;
-	/* color: #231f20; 
-	font-family: 'Karla', sans-serif; */
+	color: #231f20; 
+	font-family: 'Karla', sans-serif;
 	font-size: 16px;
 	font-size: 1.6rem;
-	line-height: 1.3;
 	font-weight: 300;
 	line-height: initial;
+	letter-spacing: normal;
 	margin: 0;
 	outline: 0;
 }
 
 /* TKT 1505  - partially reverted on TKT 1540*/
 body {
-	color: #000;
-	font-family: Georgia, serif;
+	/* color: #000;
+	font-family: Georgia, serif; */
 	/* font-size: 18px;
 	font-size: 1.8rem;
 	letter-spacing: 1.125px;
@@ -323,10 +323,12 @@ blockquote em {
 .comment-header,
 .entry-comments .comment-meta {
 	color: #000;
-	font-family: Georgia, serif;
+	/* font-family: Georgia, serif;
+	color: #231f20;  */
+	font-family: 'Karla', sans-serif;
 	font-size: 13px;
 	font-size: 1.3rem;
-	letter-spacing: 1.15px;
+	letter-spacing: normal;
 }
 
 /* ## Headings
@@ -1038,9 +1040,12 @@ img.alignright,
 }
 
 .featured-content .entry-title {
-	font-size: 18px;
+	/* font-size: 18px;
 	font-size: 1.8rem;
-	font-weight: 700;
+	font-weight: 700;  Cahnged under TKT 1540*/
+	font-size: 16px;
+	font-size: 1.6rem;
+	font-weight: 400;
 	margin-bottom: 0;
 }
 
@@ -1786,8 +1791,11 @@ h1.home-title {
 --------------------------------------------- */
 
 p.entry-meta {
-	font-size: 18px;
+	/* font-size: 18px;
 	font-size: 1.8rem;
+	margin-bottom: 0; TKT 1540 change*/
+	font-size: 14px;
+	font-size: 1.4rem;
 	margin-bottom: 0;
 }
 
@@ -1894,7 +1902,7 @@ p.entry-meta {
 	font-family: Georgia, serif;
 	font-size: 13px;
 	font-size: 1.3rem;
-	letter-spacing: 1.15px;
+	letter-spacing: normal;
 	font-weight: 400;
 	line-height: 1.6;
 	margin: 0 0 10px;
@@ -1940,7 +1948,7 @@ li.comment {
 	font-family: Georgia, serif;
 	font-size: 13px;
 	font-size: 1.3rem;
-	letter-spacing: 1.15px;
+	letter-spacing: normal;
 }
 
 .entry-comments .comment-meta a {
@@ -2116,6 +2124,9 @@ span.jp-meta-content  {
 
 
 p.jp-entry-meta {
+	font-size: 14px; /* TKT 1540 */
+	font-size: 1.4rem; /* TKT 1540 */
+	font-weight: 400; /* TKT 1540 */
 	margin-bottom: 0;
 }
 
