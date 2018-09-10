@@ -10,11 +10,12 @@
 */
 
 add_action( 'genesis_before', 'wsm_write_job_posting_schema' );
-function wsm_write_job_posting_schema(  ){
+function wsm_write_job_posting_schema(){
 
 global $post;
+global $wp_query;
 
-if ( ! is_main_query() && ! genesis_is_blog_template() || is_archive() ) {
+if ( ( ! is_main_query() && ! genesis_is_blog_template() ) || is_archive() || is_front_page() || is_paged() ) {
   return;
 }
 
