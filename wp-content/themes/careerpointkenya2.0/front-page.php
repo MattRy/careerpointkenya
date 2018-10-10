@@ -44,5 +44,17 @@ function wsm_front_page_ad_widgets() {
 		) );
 	}
 }
+
+/**
+ * Remove pagination on home page.
+ *
+ * Per ticket 1781 remove pagination on the home page and jobs archive.
+ *
+ * @package WordPress
+ * @since 1.0.0
+ * @license GNU General Public License 2.0+
+ */
+remove_action( 'genesis_after_endwhile', 'genesis_posts_nav' );
+
 //* Run the Genesis function
 genesis();

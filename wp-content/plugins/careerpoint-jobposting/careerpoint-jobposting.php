@@ -24,3 +24,4 @@ require_once( dirname( __FILE__ ) . '/helper-functions.php' );
 
 // Set up templates for new post type
 add_filter( 'single_template', 'wsm_cpk_load_single_template' );
+add_filter( 'archive_template', 'wsm_cpk_load_archive_template' );

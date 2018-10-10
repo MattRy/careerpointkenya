@@ -28,11 +28,25 @@ function jobposting_single_entry() {
 	if ( $jp_job_location_region ) $jp_job_location .= ', ' . $jp_job_location_region;
 
 	?>
+
 	<p class="jp-entry-meta">
 	<span class="jp-meta-content">VALID THROUGH: <strong><?php echo $jp_valid_through; ?> </strong></span><br>
 	<span class="jp-meta-content">LOCATION: <strong><?php echo $jp_job_location; ?> </strong></span>
 	</p>
 	<?php
-
 }
+
+/**
+ * Remove pagination on jobs archive page.
+ *
+ * Per ticket 1781 remove pagination on the home page and jobs archive.
+ *
+ * @package WordPress
+ * @since 1.0.0
+ * @license GNU General Public License 2.0+
+ */
+if ( is_post_type_archive( array( 'job_posting' ) ) ) {
+	remove_action( 'genesis_after_endwhile', 'genesis_posts_nav' );
+}
+
 genesis();
